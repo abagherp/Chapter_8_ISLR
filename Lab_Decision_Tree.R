@@ -9,4 +9,12 @@ Carseats = data.frame(Carseats,High)
 tree.carseats = tree(High~.-Sales,data=Carseats)
 summary(tree.carseats)
 plot(tree.carseats)
-text(tree.carseats,pretty = 0)
+text(tree.carseats,pretty = 1)
+
+set.seed(1011)
+train = sample(1:nrow(Carseats),250)
+tree.carseats = tree(High~.-Sales,data=Carseats,subset = train)
+plot(tree.carseats)
+text(tree.carseats,pretty = 1)
+
+
